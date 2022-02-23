@@ -93,26 +93,6 @@ class _MyOnePageState extends State<MyOnePage> {
                 child: Center(
                   child: Text(texto),
                 )),
-            Row(
-              children: [
-                Card(
-                    color: Colors.yellow,
-                    child: Container(
-                        width: 1280,
-                        height: 720,
-                        child: Center(
-                          child: Text(texto),
-                        ))),
-                Card(
-                  color: Colors.black,
-                  child: Text(texto),
-                ),
-                Card(
-                  color: Colors.pink,
-                  child: Text(texto),
-                )
-              ],
-            ),
           ],
         ));
   }
