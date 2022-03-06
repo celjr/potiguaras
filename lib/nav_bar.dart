@@ -1,45 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:potiguaras/constats.dart';
+import 'button_navbar.dart';
 
 class NavBar extends StatefulWidget {
-  const NavBar({Key? key}) : super(key: key);
+  final double controllerScroll;
+  const NavBar({Key? key, required this.controllerScroll}) : super(key: key);
 
   @override
-  _NavBarState createState() => _NavBarState();
+  _NavBarState createState() => _NavBarState(controllerScroll);
 }
 
 class _NavBarState extends State<NavBar> {
   @override
+  double controllerScroll;
+
+  _NavBarState(this.controllerScroll);
+
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
-    Color colorHover = Colors.pink;
-    bool hover = false;
+
     return Flexible(
       child: Container(
+        padding: EdgeInsets.all(8.0),
         height: screenSize.height * 0.075,
         color: primaryColor,
-        child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              InkWell(
-                //falta o set state
-                onHover: (isHover) {
-                  hover = isHover;
-                  print(hover);
-                },
-                onTap: () {
-                  print("clicou");
-                },
-                child: Text(
-                  "Home",
-                  style: TextStyle(
-                      color: hover ? colorHover : textColor,
-                      fontSize: hover ? 100 : 60),
-                ),
-              ),
-            ],
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ButtonNavBar(
+                text: "Home",
+                press: () {
+                  controllerScroll = screenSize.height;
+                }),
+            SizedBox(width: screenSize.width / 50),
+            ButtonNavBar(
+                text: "Sobre nós",
+                press: () {
+                  controllerScroll = screenSize.height * 2;
+                }),
+            SizedBox(width: screenSize.width / 50),
+            ButtonNavBar(
+                text: "Alguns Produtos",
+                press: () {
+                  controllerScroll = screenSize.height * 2;
+                }),
+            SizedBox(width: screenSize.width / 50),
+            ButtonNavBar(
+                text: "A mente por trás",
+                press: () {
+                  controllerScroll = screenSize.height * 3;
+                }),
+            SizedBox(width: screenSize.width / 50),
+            ButtonNavBar(
+                text: "Entre em contato",
+                press: () {
+                  controllerScroll = screenSize.height * 2;
+                })
+          ],
         ),
       ),
     );
