@@ -3,21 +3,28 @@ import 'constats.dart';
 
 class ButtonNavBar extends StatefulWidget {
   final String text;
-  final Function press;
+  final double posicaoTela;
+  final double controller;
 
-  const ButtonNavBar({Key? key, required this.text, required this.press})
+  const ButtonNavBar(
+      {Key? key,
+      required this.text,
+      required this.posicaoTela,
+      required this.controller})
       : super(key: key);
 
   @override
-  State<ButtonNavBar> createState() => _ButtonNavBarState(text, press());
+  State<ButtonNavBar> createState() =>
+      _ButtonNavBarState(text, posicaoTela, controller);
 }
 
 class _ButtonNavBarState extends State<ButtonNavBar> {
   bool _isHovering = false;
   final String text;
-  final Function press;
+  double posicaoTela;
+  double controller;
 
-  _ButtonNavBarState(this.text, this.press);
+  _ButtonNavBarState(this.text, this.posicaoTela, this.controller);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +33,12 @@ class _ButtonNavBarState extends State<ButtonNavBar> {
       onHover: (value) {
         setState(() => value ? _isHovering = true : _isHovering = false);
       },
-      onTap: press(),
+      onTap: () {
+        setState(() {
+          controller = posicaoTela;
+          print(controller);
+        });
+      },
 
       child: Text(
         text,

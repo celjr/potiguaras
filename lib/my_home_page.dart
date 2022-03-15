@@ -21,7 +21,7 @@ class _MyHomePageState extends State<MyHomePage> {
         preferredSize: screenSize,
       ),
       body: SingleChildScrollView(
-        controller: ScrollController(keepScrollOffset: false),
+        controller: ScrollController(initialScrollOffset: controllerScroll),
         child: Column(
           children: [
             Container(

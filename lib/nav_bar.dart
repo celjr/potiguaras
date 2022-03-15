@@ -21,44 +21,21 @@ class _NavBarState extends State<NavBar> {
 
     return Flexible(
       child: Container(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         height: screenSize.height * 0.075,
         color: primaryColor,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ButtonNavBar(
-                text: "Home",
-                press: () {
-                  controllerScroll = screenSize.height;
-                }),
-            SizedBox(width: screenSize.width / 50),
-            ButtonNavBar(
-                text: "Sobre nós",
-                press: () {
-                  controllerScroll = screenSize.height * 2;
-                }),
-            SizedBox(width: screenSize.width / 50),
-            ButtonNavBar(
-                text: "Alguns Produtos",
-                press: () {
-                  controllerScroll = screenSize.height * 2;
-                }),
-            SizedBox(width: screenSize.width / 50),
-            ButtonNavBar(
-                text: "A mente por trás",
-                press: () {
-                  controllerScroll = screenSize.height * 3;
-                }),
-            SizedBox(width: screenSize.width / 50),
-            ButtonNavBar(
-                text: "Entre em contato",
-                press: () {
-                  controllerScroll = screenSize.height * 2;
-                })
+              text: controllerScroll.toString(),
+              posicaoTela: screenSize.height * 2,
+              controller: controllerScroll,
+            ),
           ],
         ),
       ),
     );
+    print(controllerScroll);
   }
 }
