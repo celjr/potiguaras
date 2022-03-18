@@ -3,19 +3,16 @@ import 'package:potiguaras/constats.dart';
 import 'button_navbar.dart';
 
 class NavBar extends StatefulWidget {
-  final double controllerScroll;
-  const NavBar({Key? key, required this.controllerScroll}) : super(key: key);
+  const NavBar({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  _NavBarState createState() => _NavBarState(controllerScroll);
+  _NavBarState createState() => _NavBarState();
 }
 
 class _NavBarState extends State<NavBar> {
   @override
-  double controllerScroll;
-
-  _NavBarState(this.controllerScroll);
-
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
 
@@ -26,16 +23,13 @@ class _NavBarState extends State<NavBar> {
         color: primaryColor,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: const [
             ButtonNavBar(
-              text: controllerScroll.toString(),
-              posicaoTela: screenSize.height * 2,
-              controller: controllerScroll,
+              text: "Home",
             ),
           ],
         ),
       ),
     );
-    print(controllerScroll);
   }
 }

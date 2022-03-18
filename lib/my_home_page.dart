@@ -13,34 +13,79 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
+    final PageController controllerPage = PageController(
+      initialPage: 0,
+    );
     return Scaffold(
       appBar: PreferredSize(
-        child: NavBar(
-          controllerScroll: controllerScroll,
-        ),
+        child: NavBar(),
         preferredSize: screenSize,
       ),
-      body: SingleChildScrollView(
-        controller: ScrollController(initialScrollOffset: controllerScroll),
-        child: Column(
-          children: [
-            Container(
-              height: screenSize.height,
-              width: screenSize.width,
-              color: Colors.black12,
+      body: PageView(
+        controller: controllerPage,
+        scrollDirection: Axis.vertical,
+        children: [
+          Container(
+            height: screenSize.height,
+            width: screenSize.width,
+            color: Colors.pink,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                IconButton(
+                  iconSize: 50,
+                  alignment: Alignment.bottomCenter,
+                  icon: Icon(Icons.keyboard_arrow_down),
+                  onPressed: () {
+                    controllerPage.animateToPage(1,
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeIn);
+                  },
+                ),
+              ],
             ),
-            Container(
-              height: screenSize.height,
-              width: screenSize.width,
-              color: Colors.white,
+          ),
+          Container(
+            height: screenSize.height,
+            width: screenSize.width,
+            color: Colors.white,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                IconButton(
+                  iconSize: 50,
+                  alignment: Alignment.bottomCenter,
+                  icon: Icon(Icons.keyboard_arrow_down),
+                  onPressed: () {
+                    controllerPage.animateToPage(2,
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeInCirc);
+                  },
+                ),
+              ],
             ),
-            Container(
-              height: screenSize.height,
-              width: screenSize.width,
-              color: Colors.black12,
+          ),
+          Container(
+            height: screenSize.height,
+            width: screenSize.width,
+            color: Colors.black12,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                IconButton(
+                  iconSize: 50,
+                  alignment: Alignment.bottomCenter,
+                  icon: Icon(Icons.keyboard_arrow_up),
+                  onPressed: () {
+                    controllerPage.animateToPage(0,
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeIn);
+                  },
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
