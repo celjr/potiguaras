@@ -18,11 +18,12 @@ class _MyHomePageState extends State<MyHomePage> {
     );
     return Scaffold(
       appBar: PreferredSize(
-        child: NavBar(),
+        child: const NavBar(),
         preferredSize: screenSize,
       ),
       body: PageView(
         controller: controllerPage,
+        pageSnapping: false,
         scrollDirection: Axis.vertical,
         children: [
           Container(
@@ -35,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 IconButton(
                   iconSize: 50,
                   alignment: Alignment.bottomCenter,
-                  icon: Icon(Icons.keyboard_arrow_down),
+                  icon: const Icon(Icons.keyboard_arrow_down),
                   onPressed: () {
                     controllerPage.animateToPage(1,
                         duration: const Duration(milliseconds: 500),

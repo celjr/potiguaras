@@ -23,9 +23,10 @@ class _NavBarState extends State<NavBar> {
         color: primaryColor,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
+          children: [
             ButtonNavBar(
               text: "Home",
+              onPressed: () {},
             ),
           ],
         ),

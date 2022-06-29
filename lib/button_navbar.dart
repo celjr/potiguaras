@@ -4,20 +4,17 @@ import 'constats.dart';
 
 class ButtonNavBar extends StatefulWidget {
   final String text;
+  final Function() onPressed;
 
-  const ButtonNavBar({Key? key, required this.text}) : super(key: key);
+  const ButtonNavBar({Key? key, required this.text, required this.onPressed})
+      : super(key: key);
 
   @override
-  State<ButtonNavBar> createState() => _ButtonNavBarState(text);
+  State<ButtonNavBar> createState() => _ButtonNavBarState();
 }
 
 class _ButtonNavBarState extends State<ButtonNavBar> {
   bool _isHovering = false;
-  final String text;
-
-  _ButtonNavBarState(
-    this.text,
-  );
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +23,9 @@ class _ButtonNavBarState extends State<ButtonNavBar> {
       onHover: (value) {
         setState(() => value ? _isHovering = true : _isHovering = false);
       },
+      onTap: widget.onPressed,
       child: Text(
-        text,
+        widget.text,
         style: TextStyle(
             color: _isHovering ? textColorHover : textColor,
             fontSize: _isHovering ? 20 : 15),
